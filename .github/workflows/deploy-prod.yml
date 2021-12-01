@@ -26,12 +26,12 @@ on:
 
 jobs:
   execute:
-    if: ${{ github.ref == 'refs/heads/main' }} && ${{ github.event.inputs.ack }}
+    if: ${{ github.ref == 'refs/heads/main' }} && ${{ github.event.inputs.ack == true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Preperation
-        run: echo ${{ github.event.inputs.market }} ${{ github.event.inputs.ack }}
+        run: echo market - ${{ github.event.inputs.market }} and confirm - ${{ github.event.inputs.ack }}
       - name: CreateTag
         run: |
           createTag () {
