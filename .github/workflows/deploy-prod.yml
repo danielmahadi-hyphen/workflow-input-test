@@ -26,13 +26,13 @@ on:
 
 jobs:
   execute:
-    if: github.event.inputs.ack == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Preperation
         run: echo market - ${{ github.event.inputs.market }} and confirm - ${{ github.event.inputs.ack }}
       - name: CreateTag
+        if: github.ref == 'refs/heads/main' && github.event.inputs.ack == true
         run: |
           createTag () {
             local market=$1
