@@ -7,7 +7,7 @@ on:
     inputs:
       market:
         type: choice
-        description: "Please select a market"
+        description: "Please select a market for production deployment"
         options:
         - all
         - singsaver
@@ -18,6 +18,11 @@ on:
         - moneymax
         required: true
         default: "all"
+      ack:
+        type: boolean
+        description: "Confirm?"
+        required: true
+        default: false
 
 jobs:
   execute:
