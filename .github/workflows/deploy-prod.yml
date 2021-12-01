@@ -30,9 +30,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Preperation
-        run: echo market - ${{ github.event.inputs.market }} and confirm - ${{ github.event.inputs.ack }}
+        run: echo branch ${{ github.ref }} and market - ${{ github.event.inputs.market }} and confirm - ${{ github.event.inputs.ack }}
       - name: CreateTag
-        if: github.ref == 'refs/heads/main' && github.event.inputs.ack == true
+        if: github.ref == 'refs/heads/main' && github.event.inputs.ack
         run: |
           createTag () {
             local market=$1
