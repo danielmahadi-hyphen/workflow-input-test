@@ -31,12 +31,25 @@ jobs:
 
       - name: CreateTag
         run: |
-        createTag () {
-          local market=$1
-          local version=`git rev-parse --short HEAD`
-          local tag=deploy-$market-$version
+          createTag () {
+            local market=$1
+            local version=`git rev-parse --short HEAD`
+            local tag=deploy-$market-$version
 
-          echo 'Create tag:' $tag
-          git tag $tag
-          git push origin $tag
-        }
+            echo 'Create tag:' $tag
+            git tag $tag
+            git push origin $tag
+          }
+          case ${{ github.event.inputs.market }} in
+            singsaver|moneyhero|money101|comparehero|moneyguru|moneymax)
+              createTag ${{ github.event.inputs.market }}
+              ;;
+            all)
+              createTag singsaver
+              createTag moneyhero
+              createTag money101
+              createTag comparehero
+              createTag moneymax
+              createTag moneyguru
+              ;;
+          esac
