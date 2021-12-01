@@ -40,16 +40,3 @@ jobs:
           git tag $tag
           git push origin $tag
         }
-        case ${{ github.event.inputs.market }} in
-          singsaver|moneyhero|money101|comparehero|moneyguru|moneymax)
-            createTag ${{ github.event.inputs.market }}
-            ;;
-          all)
-            createTag singsaver
-            createTag moneyhero
-            createTag money101
-            createTag comparehero
-            createTag moneymax
-            createTag moneyguru
-            ;;
-        esac
