@@ -40,7 +40,6 @@ jobs:
           git tag $tag
           git push origin $tag
         }
-
         case ${{ github.event.inputs.market }} in
           singsaver|moneyhero|money101|comparehero|moneyguru|moneymax)
             createTag ${{ github.event.inputs.market }}
@@ -53,4 +52,4 @@ jobs:
             createTag moneymax
             createTag moneyguru
             ;;
-        esacå
+        esac
