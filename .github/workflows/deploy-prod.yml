@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
       - name: Preperation
         run: echo market - ${{ github.event.inputs.market }} and confirm - ${{ github.event.inputs.ack }}
       - name: CreateTag
