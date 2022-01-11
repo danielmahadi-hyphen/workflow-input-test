@@ -17,11 +17,11 @@ jobs:
 
   steps:
     - name: Find Last Release Tag
-        uses: oprypin/find-latest-tag@v1.1.0
-        id: baseref
-        with:
-          repository: ${{ github.repository }}
-          prefix: 'deploy-${{ steps.ctr.outputs.group1 }}-'
-          releases-only: true
+      uses: oprypin/find-latest-tag@v1.1.0
+      id: baseref
+      with:
+        repository: ${{ github.repository }}
+        prefix: 'deploy-${{ steps.ctr.outputs.group1 }}-'
+        releases-only: true
     - name: Log Last Release Tag        
-        run: echo '${{ steps.baseref.outputs.tag }}'
+      run: echo '${{ steps.baseref.outputs.tag }}'
