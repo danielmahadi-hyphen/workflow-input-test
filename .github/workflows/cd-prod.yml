@@ -15,13 +15,13 @@ jobs:
     name: Deploy simulation
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Find Last Release Tag
-      uses: oprypin/find-latest-tag@v1.1.0
-      id: baseref
-      with:
-        repository: ${{ github.repository }}
-        prefix: 'deploy-${{ steps.ctr.outputs.group1 }}-'
-        releases-only: true
-    - name: Log Last Release Tag        
-      run: echo '${{ steps.baseref.outputs.tag }}'
+    steps:
+      - name: Find Last Release Tag
+        uses: oprypin/find-latest-tag@v1.1.0
+        id: baseref
+        with:
+          repository: ${{ github.repository }}
+          prefix: 'deploy-${{ steps.ctr.outputs.group1 }}-'
+          releases-only: true
+      - name: Log Last Release Tag        
+        run: echo '${{ steps.baseref.outputs.tag }}'
