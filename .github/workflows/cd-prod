@@ -1,0 +1,27 @@
+name: Deploy Tagged FE Service to Prod
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'deploy-singsaver-*'
+      - 'deploy-moneyhero-*'
+      - 'deploy-money101-*'
+      - 'deploy-moneyguru-*'
+      - 'deploy-moneymax-*'
+      - 'deploy-comparehero-*'
+
+jobs:
+  deploy:
+    name: Deploy simulation
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: Find Last Release Tag
+        uses: oprypin/find-latest-tag@v1.1.0
+        id: baseref
+        with:
+          repository: ${{ github.repository }}
+          prefix: 'deploy-${{ steps.ctr.outputs.group1 }}-'
+          releases-only: true
+    - name: Log Last Release Tag        
+        run: echo '${{ steps.baseref.outputs.tag }}'
